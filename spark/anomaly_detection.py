@@ -104,9 +104,9 @@ def detect(spark, sample_size: int):
         spark_df.groupBy("tx_date", "operator")
         .agg(
             F.count("*").alias("suspect_count"),
-            F.sum("is_high_amount").alias("high_amount_count"),
-            F.sum("is_frequency_anomaly").alias("frequency_count"),
-            F.sum("is_repeated_pair").alias("repeated_pairs_count"),
+            F.sum(F.col("is_high_amount").cast("int")).alias("high_amount_count"),
+            F.sum(F.col("is_frequency_anomaly").cast("int")).alias("frequency_count"),
+            F.sum(F.col("is_repeated_pair").cast("int")).alias("repeated_pairs_count"),
             F.round(F.avg("amount"), 2).alias("avg_suspect_amount"),
         )
         .write.mode("overwrite")

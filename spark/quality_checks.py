@@ -32,8 +32,8 @@ QUALITY_CHECKS = [
     ),
     QualityCheck(
         "completeness_required_fields",
-        "transaction_id IS NULL OR timestamp IS NULL OR operator IS NULL OR amount IS NULL "
-        "OR currency IS NULL OR sender_id IS NULL OR status IS NULL OR tx_ts IS NULL",
+        "transaction_id IS NULL OR tx_ts IS NULL OR operator IS NULL OR amount IS NULL "
+        "OR currency IS NULL OR sender_id IS NULL OR status IS NULL",
         0.0,
         "critical",
     ),

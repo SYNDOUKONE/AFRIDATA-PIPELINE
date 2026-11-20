@@ -25,7 +25,8 @@ SILVER_COLUMNS = [
     "amount_bucket", "agent_id", "device_id",
 ]
 
-FAILED_RATIO = F.round(F.col("failed_count") / F.col("tx_count"), 6)
+def _failed_ratio() -> F.Column:
+    return F.round(F.col("failed_count") / F.col("tx_count"), 6)
 
 
 def agg_daily_operator(silver: DataFrame) -> DataFrame:
@@ -38,7 +39,7 @@ def agg_daily_operator(silver: DataFrame) -> DataFrame:
             F.sum("fee").alias("total_fees"),
             F.sum("is_failed").alias("failed_count"),
         )
-        .withColumn("fail_rate", FAILED_RATIO)
+        .withColumn("fail_rate", _failed_ratio())
     )
 
 
@@ -50,7 +51,7 @@ def agg_monthly_operator(silver: DataFrame) -> DataFrame:
             F.sum("amount").alias("total_amount"),
             F.sum("is_failed").alias("failed_count"),
         )
-        .withColumn("fail_rate", FAILED_RATIO)
+        .withColumn("fail_rate", _failed_ratio())
     )
 
 
@@ -65,7 +66,7 @@ def agg_daily_global(silver: DataFrame) -> DataFrame:
             F.sum("is_failed").alias("failed_count"),
             F.countDistinct("sender_id").alias("active_senders"),
         )
-        .withColumn("fail_rate", FAILED_RATIO)
+        .withColumn("fail_rate", _failed_ratio())
     )
 
 
@@ -88,7 +89,7 @@ def agg_region(silver: DataFrame) -> DataFrame:
             F.sum("amount").alias("total_amount"),
             F.sum("is_failed").alias("failed_count"),
         )
-        .withColumn("fail_rate", FAILED_RATIO)
+        .withColumn("fail_rate", _failed_ratio())
     )
 
 

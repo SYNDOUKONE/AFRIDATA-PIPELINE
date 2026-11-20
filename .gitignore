@@ -28,3 +28,6 @@ dags/__pycache__/
 
 # Échantillons lourds (JSONL)
 data/samples/*.jsonl
+
+# Lake local de démonstration / exécution
+data/lake_demo/
