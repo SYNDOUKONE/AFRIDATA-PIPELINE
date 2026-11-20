@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environnement
+.env
+
+# Données volumineuses (le lake est la source de vérité en MinIO)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/samples/*.csv
+
+# IDE
+.vscode/
+.idea/
+
+# Docker / Airflow
+logs/
+airflow/logs/*
+dags/__pycache__/
+
+# Échantillons lourds (JSONL)
+data/samples/*.jsonl

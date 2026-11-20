@@ -1,0 +1,8 @@
+FROM apache/airflow:2.9.2-python3.12
+
+USER root
+COPY --from=docker:27-cli /usr/local/bin/docker /usr/local/bin/docker
+RUN apt-get update && apt-get install -y --no-install-recommends git \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+USER airflow
