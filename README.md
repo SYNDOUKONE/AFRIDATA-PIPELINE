@@ -95,7 +95,17 @@ sert à rejouer les étapes une par une (utile en développement).
 - **Warehouse** : 8 tables analytiques PostgreSQL + 5 vues BI prêtes pour Power BI.
 - **Dashboard** : guide de construction Power BI + requêtes SQL + KPI listés dans `dashboard/`.
 
-## 5. Structure du dépôt
+## 5. Captures d'écran du dashboard BI
+
+Générées depuis les tables Gold (50 000 transactions) par `dashboard/generate_dashboard.py` :
+
+| Page | Visuel |
+| ---- | ------ |
+| [Vue d'ensemble](dashboard/img/page1_overview.png) | KPI, évolution, part opérateurs |
+| [Anomalies](dashboard/img/page2_anomalies.png) | 495 suspects, règles + Isolation Forest |
+| [Comportement](dashboard/img/page3_behavior.png) | Heatmap horaire, régions, types |
+
+## 6. Structure du dépôt
 
 ```
 AFRIDATA-PIPELINE/
